@@ -1,10 +1,14 @@
 import { TreasuryBondsTable } from "./components/TreasuryBondsTable";
 
+// Força a rota a ser dinâmica (necessário para fetch em tempo real)
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 // Função para buscar dados da API do Tesouro Direto no servidor
 async function getTreasuryBonds() {
   try {
     const response = await fetch("https://api.radaropcoes.com/bonds.json", {
-      cache: "no-store", // Garante dados sempre atualizados
+      next: { revalidate: 60 }, // Revalida a cada 60 segundos
     });
 
     if (!response.ok) {
@@ -53,6 +57,8 @@ export default async function Home() {
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-8">
+        {/* Info Card */}
+
         {/* Treasury Bonds Table */}
         {data ? (
           <TreasuryBondsTable data={data} />
@@ -70,6 +76,51 @@ export default async function Home() {
             </p>
           </div>
         )}
+
+        {/* Footer Info */}
+        <div className="mt-8 rounded-2xl bg-card border border-border p-6">
+          <div className="grid gap-6 md:grid-cols-3">
+            <div className="flex gap-4">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent/10">
+                <span className="text-xl">📈</span>
+              </div>
+              <div>
+                <h4 className="font-semibold text-foreground mb-1">
+                  Rentabilidade
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Acompanhe as taxas atualizadas diariamente
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                <span className="text-xl">🔒</span>
+              </div>
+              <div>
+                <h4 className="font-semibold text-foreground mb-1">
+                  Segurança
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Investimento garantido pelo Governo Federal
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent/10">
+                <span className="text-xl">💰</span>
+              </div>
+              <div>
+                <h4 className="font-semibold text-foreground mb-1">
+                  Acessível
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  Invista a partir de R$ 30,00
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Footer */}
