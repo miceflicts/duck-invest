@@ -1,0 +1,350 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .font-manrope {
+    font-family: var(--font-manrope);
+  }
+
+  .font-poppins {
+    font-family: var(--font-poppins);
+  }
+
+  .font-inter {
+    font-family: var(--font-inter);
+  }
+
+  .gradient-button {
+    background: hsl(var(--primary));
+  }
+
+  /* Animações para transições de páginas (sem alterações) */
+  .transitioning-to-thank-you {
+    animation: fadeOutIn 0.3s ease-in-out;
+  }
+
+  .exiting-thank-you {
+    animation: fadeOut 0.3s ease-in-out;
+  }
+
+  @keyframes fadeOutIn {
+    0% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.7;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 0.5s ease-out forwards;
+  }
+
+  /* Animações de partículas flutuantes (sem alterações) */
+  .floating-particle {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.05);
+    pointer-events: none;
+  }
+
+  /* --- ATUALIZAÇÃO: Scrollbar com a nova paleta de cores --- */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted));
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent));
+  }
+
+  /* Para Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted)) transparent;
+  }
+
+  /* Classes para lidar com safe-area em dispositivos móveis (sem alterações) */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .mb-safe {
+    margin-bottom: env(safe-area-inset-bottom);
+  }
+
+  .sticky-safe {
+    bottom: env(safe-area-inset-bottom);
+  }
+
+  /* === CORES DO DUOLINGO - MODO CLARO === */
+  :root {
+    /* Backgrounds */
+    --background: 0 0% 100%; /* Branco puro */
+    --foreground: 0 0% 13%; /* Texto escuro #212121 */
+
+    /* Cards */
+    --card: 0 0% 100%; /* Branco */
+    --card-foreground: 0 0% 13%;
+
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 13%;
+
+    /* Primary - Azul Duolingo */
+    --primary: 203 82% 54%; /* #1CB0F6 - Azul vibrante */
+    --primary-border: 203 82% 47%; /* #1CB0F6 - Azul vibrante */
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Cinza claro */
+    --secondary: 0 0% 96%; /* #F5F5F5 */
+    --secondary-foreground: 0 0% 13%;
+
+    /* Muted */
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%; /* #737373 */
+
+    /* Accent - Verde Duolingo */
+    --accent: 140 82% 57%; /* #58CC02 - Verde brilhante */
+    --accent-border: 140 82% 44%; /* #58CC02 */
+    --accent-foreground: 0 0% 100%;
+
+    /* CTA - Verde */
+    --cta: 140 82% 57%;
+    --cta-foreground: 0 0% 100%;
+
+    /* Accent Secondary - Verde hover */
+    --accent-secondary: 140 82% 67%;
+
+    /* Destructive - Vermelho */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders & Inputs */
+    --border: 0 0% 90%; /* #E5E5E5 */
+    --border-accent: 140 82% 57%;
+    --input: 0 0% 90%;
+    --ring: 210 100% 56%;
+
+    /* Text variations */
+    --text-primary: 0 0% 13%;
+    --text-light: 0 0% 45%;
+    --text-foreground: 0 0% 100%;
+
+    --radius: 1rem;
+  }
+
+  /* === CORES DO DUOLINGO - MODO ESCURO === */
+  .dark {
+    /* Backgrounds - Tons de cinza escuro do Duolingo */
+    --background: 197 22% 12%; /* #232930 - Fundo principal escuro */
+    --foreground: 0 0% 100%; /* Texto branco */
+
+    /* Cards - Um pouco mais claro que o fundo */
+    --card: 210 11% 18%; /* #2A313A */
+    --card-foreground: 0 0% 100%;
+
+    /* Popover */
+    --popover: 210 11% 18%;
+    --popover-foreground: 0 0% 100%;
+
+    /* Primary - Azul mantido mas ajustado para dark */
+    --primary: 203 82% 54%; /* #1CB0F6 */
+    --primary-border: 203 82% 44%; /* #1CB0F6 - Azul vibrante */
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Tom escuro */
+    --secondary: 210 11% 22%; /* #2F3943 */
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted */
+    --muted: 210 11% 22%;
+    --muted-foreground: 0 0% 70%; /* #B3B3B3 */
+
+    /* Accent - Verde Duolingo (mantido vibrante) */
+    --accent: 140 82% 57%; /* #58CC02 */
+    --accent-border: 140 82% 42%; /* #58CC02 */
+    --accent-foreground: 0 0% 13%;
+
+    /* CTA */
+    --cta: 140 82% 57%;
+    --cta-foreground: 0 0% 13%;
+
+    /* Accent Secondary */
+    --accent-secondary: 140 82% 67%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders & Inputs */
+    --border: 210 11% 25%; /* #37404A */
+    --border-accent: 140 82% 57%;
+    --input: 210 11% 25%;
+    --ring: 210 100% 56%;
+
+    /* Text variations */
+    --text-primary: 0 0% 100%;
+    --text-light: 0 0% 70%;
+    --text-foreground: 0 0% 13%;
+
+    --radius: 1rem;
+  }
+}
+
+/* --- ATUALIZAÇÃO: Aplicação das cores padrão --- */
+@layer base {
+  * {
+    /* Aplica a cor da borda padrão a todos os elementos */
+    @apply border-border;
+  }
+
+  body {
+    /* Aplica a cor de fundo e a cor de texto padrão ao corpo do documento */
+    @apply bg-background text-foreground;
+  }
+}
+
+@theme inline {
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+
+  @keyframes marquee-vertical {
+    from {
+      transform: translateY(0);
+    }
+
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
+}
+
+@layer components {
+  .slider-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .slider-track {
+    display: flex;
+    gap: 2rem;
+    width: fit-content;
+  }
+
+  .slider-item {
+    flex-shrink: 0;
+  }
+
+  .slider-controler .swiper-button-next,
+  .slider-controler .swiper-button-prev {
+    @apply h-12 w-12 rounded-full bg-card text-primary shadow-md transition-all duration-300 hover:bg-primary hover:text-primary-foreground;
+  }
+
+  .slider-controler .swiper-button-next::after,
+  .slider-controler .swiper-button-prev::after {
+    @apply text-xl font-extrabold;
+  }
+
+  .swiper-pagination .swiper-pagination-bullet {
+    @apply h-3 w-3 bg-border opacity-80 transition-all duration-300;
+  }
+
+  .swiper-pagination .swiper-pagination-bullet-active {
+    @apply w-6 rounded-full bg-primary opacity-100;
+  }
+}
+
+@layer utilities {
+  @keyframes slide {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-slide {
+    animation: slide 30s linear infinite;
+  }
+
+  .waves {
+    animation: waves 1.5s linear infinite;
+  }
+
+  @keyframes waves {
+    0% {
+      transform: translateY(-170px);
+    }
+
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0% {
+      /* Usa a rotação definida pelo Tailwind e adiciona o translate Y */
+      transform: translateY(0px) rotate(var(--tw-rotate));
+    }
+    50% {
+      transform: translateY(-20px) rotate(var(--tw-rotate));
+    }
+    100% {
+      transform: translateY(0px) rotate(var(--tw-rotate));
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+}
