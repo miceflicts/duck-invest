@@ -6,3 +6,4 @@
 export { useBondData } from "./useBondData";
 export { useBondFilter } from "./useBondFilter";
 export { useSorting } from "./useSorting";
+export { useBondDetail } from "./useBondDetail";

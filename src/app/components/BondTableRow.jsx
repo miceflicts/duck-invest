@@ -1,3 +1,6 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import { BondTypeBadge } from "./BondTypeBadge";
 
 /**
@@ -21,8 +24,21 @@ const formatPercentage = (value) => {
  * Componente de linha da tabela
  */
 export function BondTableRow({ bond }) {
+  const router = useRouter();
+
+  const handleClick = () => {
+    // Cria um ID único baseado no nome do título (sem espaços e caracteres especiais)
+    const bondId = encodeURIComponent(
+      bond.name.replace(/\s+/g, "-").toLowerCase()
+    );
+    router.push(`/investimento/${bondId}`);
+  };
+
   return (
-    <tr className="hover:bg-muted/30 transition-colors">
+    <tr
+      onClick={handleClick}
+      className="hover:bg-muted/30 transition-colors cursor-pointer"
+    >
       <td className="px-6 py-4 font-medium text-foreground">
         <div className="flex items-center gap-3">
           <BondTypeBadge type={bond.type} />
