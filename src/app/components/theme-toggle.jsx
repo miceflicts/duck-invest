@@ -17,7 +17,7 @@ export function ThemeToggle() {
         className="relative h-10 w-10 rounded-full bg-secondary/50"
         aria-label="Alternar tema"
       >
-        <span className="sr-only">Carregando tema...</span>
+        <span className="sr-only">Carregandaao tema...</span>
       </button>
     );
   }
